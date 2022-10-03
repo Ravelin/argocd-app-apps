@@ -14,12 +14,16 @@ spec:
     chart: grafana
     repoURL: https://grafana.github.io/helm-charts
     targetRevision: 6.16.14
+    helm:
+      values: |
+        adminPassword: admin
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
 
 ---
+
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
