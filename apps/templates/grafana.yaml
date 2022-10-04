@@ -16,6 +16,14 @@ spec:
     targetRevision: 6.16.14
     helm:
       values: |
+        replicas: 1
+        ingress:
+          enabled: true
+          annotations:
+            kubernetes.io/ingress.class: nginx
+          hosts:
+            - grafana.example.com
+        adminUser: admin
         adminPassword: admin
   syncPolicy:
     automated:
