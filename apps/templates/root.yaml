@@ -2,13 +2,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: apps
+  namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   destination:
     server: {{ .Values.spec.destination.server }}
-    namespace: applications
   source:
     path: apps/
     repoURL: https://github.com/ravelin/argocd-app-apps
