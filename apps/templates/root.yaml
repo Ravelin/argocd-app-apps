@@ -9,6 +9,7 @@ spec:
   project: default
   destination:
     server: {{ .Values.spec.destination.server }}
+    namespace: argocd
   source:
     path: apps/
     repoURL: https://github.com/ravelin/argocd-app-apps
