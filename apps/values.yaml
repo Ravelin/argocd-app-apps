@@ -6,7 +6,11 @@ spec:
     targetRevision: HEAD
 
 grafana:
-  AdminPassword: "CHANGE_ME"
+  ingress:
+    enabled: true
+    hosts: grafana.example.com
+    ingressClass: nginx
+  adminPassword: admin
 
 prometheus:
   rbac:

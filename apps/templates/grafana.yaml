@@ -20,10 +20,14 @@ spec:
             - ReadWriteOnce
           size: 10Gi
           storageClassName: "standard"
+        ingress:
+          enabled: {{ .Values.grafana.ingress.enabled }}
+          annotations:
+            kubernetes.io/ingress.class: {{ .Values.grafana.ingress.class }}
+          hosts:
+            - {{ .Values.grafana.ingress.host }}
+        adminUser: admin
         adminPassword: {{ .Values.spec.source.helm.values.adminPassword }}
-        service:
-          type: NodePort
-          nodePort: 30001
     repoURL: https://grafana.github.io/helm-charts
   syncPolicy:
     automated:
