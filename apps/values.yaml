@@ -4,3 +4,21 @@ spec:
   source:
     repoURL: https://github.com/ravelin/argocd-app-apps
     targetRevision: HEAD
+
+grafana:
+  AdminPassword: "CHANGE_ME"
+
+prometheus:
+  rbac:
+    create: true
+  alertmanager:
+    enabled: true
+    ingress:
+      enabled: true
+      host: alertmanager.prometheus.test
+      paths: /
+      pathType: Prefix
+      tls:
+        secretName: alertmanager-tls
+  node-exporter:
+    enabled: true
