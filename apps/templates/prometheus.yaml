@@ -13,21 +13,8 @@ spec:
     chart: prometheus
     helm:
       values: |
-        alertmanager:
-          enabled: {{ .Values.prometheus.alertmanager.enabled }}
-          ingress:
-            enabled: {{ .Values.prometheus.alertmanager.ingress.enabled }}
-            annotations:
-              kubernetes.io/ingress.class: nginx
-              kubernetes.io/tls-acme: "true"
-            hosts:
-              - {{ .Values.prometheus.alertmanager.ingress.host }}
-            tls:
-              - secretName: {{ .Values.prometheus.alertmanager.ingress.tls.secretName }}
-                hosts:
-                  - {{ .Values.prometheus.alertmanager.ingress.host }}
-        prometheus-node-exporter:
-          enable: {{ .Values.prometheus.node-exporter.enabled }}
+        pushgateway:
+          enabled: false
     repoURL: https://prometheus-community.github.io/helm-charts/
   syncPolicy:
     automated:
