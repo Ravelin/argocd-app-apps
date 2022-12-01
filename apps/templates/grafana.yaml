@@ -13,21 +13,15 @@ spec:
     chart: grafana
     helm:
       values: |
-        persistence:
-          enabled: true
-          type: pvc
-          accessModes:
-            - ReadWriteOnce
-          size: 10Gi
-          storageClassName: "standard"
+        replicas: 1
         ingress:
-          enabled: {{ .Values.grafana.ingress.enabled }}
+          enabled: true
           annotations:
-            kubernetes.io/ingress.class: {{ .Values.grafana.ingress.class }}
+            kubernetes.io/ingress.class: nginx
           hosts:
-            - {{ .Values.grafana.ingress.host }}
+            - grafana.example.com
         adminUser: admin
-        adminPassword: {{ .Values.spec.source.helm.values.adminPassword }}
+        adminPassword: admin
     repoURL: https://grafana.github.io/helm-charts
   syncPolicy:
     automated:
